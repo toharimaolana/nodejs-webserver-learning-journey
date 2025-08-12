@@ -1,7 +1,11 @@
 const http = require('http');
  
 const requestListener = (request, response) => {
-    response.setHeader('Content-Type', 'text/html');
+    // Set default headers
+    response.setHeader('Content-Type', 'application/json');
+    response.setHeader('Powered-By', 'Node.js');
+
+    // Set default status code
     response.statusCode = 200;
  
     const { method, url } = request;
