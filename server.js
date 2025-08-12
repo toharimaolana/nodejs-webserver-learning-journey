@@ -13,15 +13,21 @@ const requestListener = (request, response) => {
     if(url === '/') {
         if(method === 'GET') {
             response.statusCode = 200; // OK
-            response.end('<h1>Ini adalah homepage</h1>');
+            response.end(JSON.stringify({
+                message: 'Selamat datang di homepage!'
+            }));
         } else {
             response.statusCode = 400; // Method Not Allowed
-            response.end(`<h1>Halaman tidak dapat diakses dengan ${method} request</h1>`);
+            response.end(JSON.stringify({
+                massage : `Halaman tidak dapat diakses menggunakan ${method} request`
+            }));
         }
     } else if(url === '/about') {
         if(method === 'GET') {
             response.statusCode = 200; // OK
-            response.end('<h1>Halo! Ini adalah halaman about</h1>')
+            response.end(JSON.stringify({
+                message: 'Selamat datang di halaman about!'
+            }));
         } else if(method === 'POST') {
             let body = [];
     
@@ -33,15 +39,21 @@ const requestListener = (request, response) => {
                 body = Buffer.concat(body).toString();
                 const { name } = JSON.parse(body);
                 response.statusCode = 200; // OK
-                response.end(`<h1>Halo, ${name}! Ini adalah halaman about</h1>`);
+                response.end(JSON.stringify({
+                    message: `Selamat datang di halaman about, ${name}!`
+                }));
             });
         } else {
             response.statusCode = 400; // Method Not Allowed
-            response.end(`<h1>Halaman tidak dapat diakses menggunakan ${method} request</h1>`);
+            response.end(JSON.stringify({
+                message: `Halaman tidak dapat diakses menggunakan ${method} request`
+            }));
         }
     } else {
         response.statusCode = 404; // Not Found
-        response.end('<h1>Halaman tidak ditemukan!</h1>');
+        response.end(JSON.stringify({
+            message: 'Halaman tidak ditemukan!'
+            }));
     }
 
     if(method === "PUT"){
