@@ -16,5 +16,5 @@ The purpose is to understand how requests and responses work at the most basic l
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/toharimaolana/nodejs-webserver-basic.git
+   git clone https://github.com/toharimaolana/nodejs-webserver-learning-journey
    cd nodejs-webserver-basic
